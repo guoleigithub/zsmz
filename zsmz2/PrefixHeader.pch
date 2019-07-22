@@ -1,0 +1,58 @@
+//
+//  PrefixHeader.pch
+//  zsmz2
+//
+//  Created by GL on 2019/7/22.
+//  Copyright © 2019年 GL. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "APIConfig.h"
+#import "SbConfig.h"
+#import "AdaptiveManager.h"
+//3rd
+#import <AFNetworking.h>
+#import <Masonry.h>
+#import <MJRefresh.h>
+#import <MJExtension.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SVProgressHUD.h>
+
+#if __has_feature(objc_arc)
+#define IMP_BLOCK_SELF(type) __weak type *block_self=self;
+#else
+#define IMP_BLOCK_SELF(type) __block type *block_self=self;
+#endif
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+#define STRONGSELF __strong typeof(weakSelf) strongSelf = weakSelf;
+
+//iPhoneX safeAreaInsets适配
+#define VIEWSAFEAREAINSETS(view) ({UIEdgeInsets i; if(@available(iOS 11.0, *)) {i = view.safeAreaInsets;} else {i = UIEdgeInsetsZero;} i;})
+
+
+///设置->iPhone6 6s尺寸
+#define Psix_w                kDScreenWidth/375
+#define Psix_H                kDScreenHeight/667
+
+#define kApplicationWidth    ([UIScreen mainScreen].applicationFrame).size.width //应用程序的宽度
+#define kApplicationHeight   ([UIScreen mainScreen].applicationFrame).size.height //应用程序的高度
+#define kDScreenWidth         [[UIScreen mainScreen] bounds].size.width//屏幕的宽度
+#define kDScreenHeight        [[UIScreen mainScreen] bounds].size.height //屏幕的高度
+#define kScreenScale         [UIScreen mainScreen].scale;
+//动态获取设备高度和宽度
+#define IPHONE_WIDTH         [UIScreen mainScreen].bounds.size.width
+#define IPHONE_HEIGHT        [UIScreen mainScreen].bounds.size.height
+#define VIEW_HEIGHT          self.view.frame.size.height
+#define SCALE_SCREEN         [UIScreen mainScreen].scale
+
+#define theApp               ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define KEY_WINDOW           [[UIApplication sharedApplication]keyWindow]
+#define USER_DEFAULT         [NSUserDefaults standardUserDefaults]
+
+
+
+#endif /* PrefixHeader_pch */
